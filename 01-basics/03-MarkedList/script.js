@@ -32,12 +32,13 @@ const emails = [
 createApp({
   data() {
     return {
-      emails: [...emails],
+      emails,
       filter: '',
     };
   },
+
   computed: {
-    filteredList() {
+    markedEmails() {
       return this.emails.map((email) => ({
         email,
         marked: this.filter && email.includes(this.filter),
