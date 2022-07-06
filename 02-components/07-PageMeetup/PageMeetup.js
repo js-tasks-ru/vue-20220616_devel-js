@@ -1,8 +1,11 @@
 import { defineComponent } from './vendor/vue.esm-browser.js';
 import UiContainer from './UiContainer.js';
 import UiAlert from './UiAlert.js';
+
 import { fetchMeetupById } from './meetupService';
 import MeetupView from './components/MeetupView';
+=======
+
 
 export default defineComponent({
   name: 'PageMeetup',
@@ -47,11 +50,9 @@ export default defineComponent({
   template: `
     <div class="page-meetup">
       <meetup-view :meetup="meetup" v-if="meetup"></meetup-view>
-
       <ui-container v-else-if="meetup === undefined">
         <ui-alert>Загрузка...</ui-alert>
       </ui-container>
-
       <ui-container v-else-if="error">
         <ui-alert >{{ error }}</ui-alert>
       </ui-container>
