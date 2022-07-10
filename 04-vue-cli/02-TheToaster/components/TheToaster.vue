@@ -16,17 +16,18 @@ export default {
   },
   methods: {
     success(message) {
-      this.toasts.push({ type: 'success', text: message, date: Date.now() });
-      this.removeToast();
+      const elem = { type: 'success', text: message };
+      this.toasts.push(elem);
+      this.removeToast(elem);
     },
     error(message) {
-      this.toasts.push({ type: 'error', text: message, date: Date.now() });
-      this.removeToast();
+      const elem = { type: 'error', text: message };
+      this.toasts.push(elem);
+      this.removeToast(elem);
     },
-    removeToast() {
+    removeToast(elem) {
       setTimeout(() => {
-        const time = Date.now();
-        this.toasts = this.toasts.filter((item) => !(time - item.date + 50 > 5000));
+        this.toasts.splice(this.toasts.indexOf(elem), 1);
       }, 5000);
     },
   },
