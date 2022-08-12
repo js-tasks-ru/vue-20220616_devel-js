@@ -20,7 +20,7 @@
         'form-control_sm': small,
       }"
       v-bind="$attrs"
-      :value="modelValue"
+      :value="value"
       @[updateEvent]="$emit('update:modelValue', $event.target.value)"
     />
 
@@ -36,7 +36,7 @@ export default {
   inheritAttrs: false,
 
   props: {
-    modelValue: {
+    value: {
       type: String,
     },
 
