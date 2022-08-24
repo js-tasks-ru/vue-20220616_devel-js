@@ -1,5 +1,5 @@
 <template>
-  <form class="meetup-form" @submit.prevent="$emit('submit', cloneLocalMeetup)">
+  <form class="meetup-form" @submit.prevent="$emit('submit', cloneLocalMeetup())">
     <div class="meetup-form__content">
       <fieldset class="meetup-form__section">
         <ui-form-group label="Название">
@@ -103,20 +103,17 @@ export default {
       localMeetup: cloneDeep(this.meetup),
     };
   },
-  computed: {
-    cloneLocalMeetup() {
-      return cloneDeep(this.localMeetup);
-    },
-  },
+
   methods: {
     addAgendaItem() {
       const agenda = this.localMeetup.agenda;
       agenda.push(createAgendaItem());
-      this.$nextTick(() => {
-        if (agenda.length > 1) {
-          agenda[agenda.length - 1].startsAt = agenda[agenda.length - 2].endsAt;
-        }
-      });
+      if (agenda.length > 1) {
+        agenda[agenda.length - 1].startsAt = agenda[agenda.length - 2].endsAt;
+      }
+    },
+    cloneLocalMeetup() {
+      return cloneDeep(this.localMeetup);
     },
   },
 };
