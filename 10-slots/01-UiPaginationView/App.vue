@@ -6,8 +6,8 @@
       </ui-button>
     </div>
 
-    <ui-pagination-view v-slot="{ item }" :items="meetups" :page="page" :per-page="perPage">
-      <meetup-card :meetup="item" class="list-item" />
+    <ui-pagination-view v-slot="{ item, key }" :items="meetups" :page="page" :per-page="perPage">
+      <meetup-card :key="key" :meetup="item" class="list-item" />
     </ui-pagination-view>
   </div>
 </template>
