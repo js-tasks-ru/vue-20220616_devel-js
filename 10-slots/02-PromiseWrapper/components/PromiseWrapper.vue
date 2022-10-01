@@ -1,7 +1,7 @@
 <template>
   <slot v-if="promiseState === 'pending'" name="pending" />
-  <slot v-if="promiseState === 'rejected'" :error="promiseError" name="rejected" />
-  <slot v-if="promiseState === 'fulfilled'" name="fulfilled" :result="promiseLocal" />
+  <slot v-else-if="promiseState === 'rejected'" :error="promiseError" name="rejected" />
+  <slot v-else-if="promiseState === 'fulfilled'" name="fulfilled" :result="promiseLocal" />
 </template>
 
 <script>
